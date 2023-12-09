@@ -19,18 +19,44 @@ include("connect.php");
   echo $row['file'];
   ?>
 </h1>
-<a href="?file=<?php  echo $row['file']; ?>">Cкачать</a>
+<a href="main.php?path=file/<?php  echo $row['file']; ?>">Cкачать</a>
 <?php
 }
 ?>
 </form>  
+
 <?php
-if(isset($_GET['file'])) {
-$file = 'file/'$_GET['file']'';
-header('Content-Type: image/jpeg');
-header('Content-Disposition: attachment; filename="itrobo.jpg"');
-readfile($file);
+if(isset($_GET['path']))
+{
+//Читать url
+$url = $_GET['path'];//Очистить кэш
+clearstatcache();
+
+//Проверьте, существует ли путь к файлу или нет
+if(file_exists($url)) {
+
+//Определение информации заголовка
+header('Content-Description: File Transfer');
+header('Content-Type: application/octet-stream');
+header('Content-Disposition: attachment; filename="'.basename($url).'"');
+header('Pragma: public');
+
+//Очистить выходной буфер системы
+flush();
+
+//Считайте размер файла
+readfile($url,true);
+
+//Завершить работу со скриптом
+die();
 }
+else{
+echo "Путь к файлу не существует.";
+}
+}
+echo "Путь к файлу не определен."
+
 ?>
+
 </body>
 </html>
