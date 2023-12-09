@@ -18,21 +18,26 @@ include("connect.php");
 <?php 
   @include "Header/header.php";
 ?>
-<form>
-  <?php
-  $sql = mysqli_query($link,'SELECT * FROM files');
-  foreach($sql as $row){
-?>
-<h1 >
-  <?php
-  echo $row['file'];
+
+<div class="panel">
+  <form>
+    <?php
+    $sql = mysqli_query($link,'SELECT * FROM files');
+    foreach($sql as $row){
   ?>
-</h1>
-<a href="main.php?path=file/<?php  echo $row['file']; ?>" class="flex mx-auto mt-16 w-32 text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg">Cкачать</a>
-<?php
-}
-?>
-</form>  
+    <div>
+      <h1 >
+        <?php
+          echo $row['file'];
+        ?>
+      </h1>
+      <a href="main.php?path=file/<?php  echo $row['file']; ?>" class="flex mx-auto w-32 text-white bg-red-500 border-0 px-8 focus:outline-none hover:bg-red-600 rounded text-lg">Cкачать</a>
+      <?php
+        }
+      ?>
+    </div>
+  </form>
+</div>
 
 <?php
 if(isset($_GET['path']))
@@ -60,10 +65,10 @@ readfile($url,true);
 die();
 }
 else{
-echo "<div class='text-[#b91c1c]'>Путь к файлу не существует.</div>";
+echo "";
 }
 }
-echo "<div class='text-[#b91c1c]'>Путь к файлу не определен.</div>"
+echo ""
 
 ?>
 

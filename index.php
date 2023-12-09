@@ -14,7 +14,6 @@ include("connect.php");
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-
 <?php 
   @include "Header/header.php";
 ?>
@@ -25,9 +24,10 @@ include("connect.php");
       <h2 class="text-gray-900 text-lg font-medium title-font mb-5">Загрузка файлов</h2>
       <div class="relative mb-4">
         <label for="full-name" class="leading-7 text-sm text-gray-600">Загрузите файл</label>
-        <input type="file" name="file" id="" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+        <input type="file" name="file" id="" class="w-full bg-white rounded border border-gray-300 focus:bg-red-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
       </div>
-      <input  type="submit" value="Добавить" name="btn" class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+      <input  type="submit" value="Добавить" name="btn" class="text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-500 rounded text-lg">
+      <a href="/project/main.php">Перейти к файлам</a>
     </form>
   </div>
 </section>
