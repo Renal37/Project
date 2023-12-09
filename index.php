@@ -36,12 +36,18 @@
 
 <section>
   <form action="" method="post">
-    <input type="text">
+    <input type="file" name="" id="">
+    <input type="submit" value="">
   </form>
   <form action="" method="post">
 
   </form>
+
+  <div>
+    <p></p>
+  </div>
 </section>
+
 
 </body>
 </html>
