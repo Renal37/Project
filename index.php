@@ -36,9 +36,8 @@
 
 <section>
   <form action="" method="post"  enctype="multipart/form-data">
-    <input type="file" name="file" id="">
+  <input type="file" name="file" id="file" required><label for="file" name='btn'>Выбрать изображение</label>
     <input type="submit" value="Добавить" name="btn">
-    <input type="file" name="file" id="file" required><label for="file" name='btn'>Выбрать изображение</label>
   </form>
 </section>
 <?php
