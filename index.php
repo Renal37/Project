@@ -1,3 +1,6 @@
+<?php
+include("connect.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,17 +44,17 @@
   </form>
 </section>
 <?php
-$link = mysqli_connect("localhost","root","123",'file');
 if (isset($_POST["btn"])) {
   $file = $_FILES['file']['tmp_name'];
   $filename = $_FILES['file']['name'];
   if ($file) {
     move_uploaded_file($_FILES['file']['tmp_name'], 'file/' . $_FILES['file']['name']);
     $add = mysqli_query($link, "INSERT INTO files (file) values ('$filename')");
-
+    header("location:index.php");
     if ($link->query($add)) {
       echo "<p class='info'>Вы успешно добавиили</p>";
     }
+
 }
 }
 ?>
