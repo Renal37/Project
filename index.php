@@ -34,5 +34,14 @@
   </div>
 </header>
 
+<section>
+  <form action="" method="post">
+    <input type="text">
+  </form>
+  <form action="" method="post">
+
+  </form>
+</section>
+
 </body>
 </html>
