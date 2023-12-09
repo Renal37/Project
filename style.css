@@ -20,5 +20,21 @@
     flex-wrap: wrap;
     gap: 30px;
     padding: 15px 30px 15px 30px;
-    overflow-y: auto;
+    overflow-x: auto;
+    justify-content: end;
+}
+.panel h1{
+  text-align: center;
+  white-space:nowrap;
+
+}
+.panel a {
+display: flex;
+justify-content: end;
+  text-align: center;
+}
+.text_center{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
