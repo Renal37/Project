@@ -28,7 +28,7 @@ include("connect.php");
       foreach ($sql as $row) {
       ?>
         <div class="container flex center border-solid border-2 border-red-500 rounded-md p-1 gap-2 text_center">
-          <h1 class=""> <?php
+          <h1 class="h1"> <?php
                 echo $row['file'];
                 ?></h1>
           <a href="main.php?path=file/<?php echo $row['file']; ?>" class="flex  w-32 h-9 text-white bg-red-500 border-0 px-8 focus:outline-none hover:bg-red-600 rounded text-lg">Скачать</a>

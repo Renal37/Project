@@ -21,6 +21,7 @@ include("connect.php");
 <section class="text-gray-600 body-font">
   <div class="docPanel">
     <form class="bg-gray-100 rounded-lg p-8 flex flex-col mt-10" action="" method="post"  enctype="multipart/form-data">
+      
       <h2 class="text-gray-900 text-lg font-medium title-font mb-5">Загрузка файлов</h2>
       <div class="relative mb-4">
         <label for="full-name" class="leading-7 text-sm text-gray-600">Загрузите файл</label>
@@ -28,35 +29,31 @@ include("connect.php");
       </div>
       <input  type="submit" value="Добавить" name="btn" class="text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-500 rounded text-lg">
       <a href="main.php">Перейти к файлам</a>
-    </form>
-  </div>
-</section>
-
-<!-- <section>
-  <form action="" method="post"  enctype="multipart/form-data">
-  <input type="file" name="file" id="file" required><label for="file" name='btn'>Выбрать изображение</label>
-    <input type="submit" value="Добавить" name="btn">
-  </form>
-</section> -->  
-<?php
+      <?php
 if (isset($_POST["btn"])) {
   $files = $_FILES['file']['type'];
   $file = $_FILES['file']['tmp_name'];
-  echo $files;
+  // echo $files;
   $filename = $_FILES['file']['name'];
   if ($files =='text/plain' or $files == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' or $files == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
     if ($file) {
     move_uploaded_file($_FILES['file']['tmp_name'], 'file/' . $_FILES['file']['name']);
     $add = mysqli_query($link, "INSERT INTO files (file) values ('$filename')");
-    header("location:index.php");
-    if ($link->query($add)) {
+    // header("location:index.php");
+    if ($add) {
       echo "<p class='info'>Вы успешно добавиили</p>";
-    }
-
+    }   
 }
+}
+else{
+  echo "Error";
 }
 }
 ?>
+    </form>
+  </div>
+</section>
+ 
 
 </body>
 </html>
