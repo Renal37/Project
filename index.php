@@ -35,19 +35,27 @@
 </header>
 
 <section>
-  <form action="" method="post">
-    <input type="file" name="" id="">
-    <input type="submit" value="">
+  <form action="" method="post"  enctype="multipart/form-data">
+    <input type="file" name="file" id="">
+    <input type="submit" value="Добавить" name="btn">
+    <input type="file" name="file" id="file" required><label for="file" name='btn'>Выбрать изображение</label>
   </form>
-  <form action="" method="post">
-
-  </form>
-
-  <div>
-    <p></p>
-  </div>
 </section>
+<?php
+$link = mysqli_connect("localhost","root","123",'file');
+if (isset($_POST["btn"])) {
+  $file = $_FILES['file']['tmp_name'];
+  $filename = $_FILES['file']['name'];
+  if ($file) {
+    move_uploaded_file($_FILES['file']['tmp_name'], 'file/' . $_FILES['file']['name']);
+    $add = mysqli_query($link, "INSERT INTO files (file) values ('$filename')");
 
+    if ($link->query($add)) {
+      echo "<p class='info'>Вы успешно добавиили</p>";
+    }
+}
+}
+?>
 
 </body>
 </html>
