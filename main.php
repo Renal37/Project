@@ -6,9 +6,18 @@ include("connect.php");
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Документооборот</title>
+  <link rel="icon" href="./image/Без названия (2).jpg" type="image/jpg">
+
+  <link rel="stylesheet" href="./style.css">
+  <!-- tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
+
+<?php 
+  @include "Header/header.php";
+?>
 <form>
   <?php
   $sql = mysqli_query($link,'SELECT * FROM files');
@@ -19,7 +28,7 @@ include("connect.php");
   echo $row['file'];
   ?>
 </h1>
-<a href="main.php?path=file/<?php  echo $row['file']; ?>">Cкачать</a>
+<a href="main.php?path=file/<?php  echo $row['file']; ?>" class="flex mx-auto mt-16 w-32 text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg">Cкачать</a>
 <?php
 }
 ?>
@@ -51,12 +60,13 @@ readfile($url,true);
 die();
 }
 else{
-echo "Путь к файлу не существует.";
+echo "<div class='text-[#b91c1c]'>Путь к файлу не существует.</div>";
 }
 }
-echo "Путь к файлу не определен."
+echo "<div class='text-[#b91c1c]'>Путь к файлу не определен.</div>"
 
 ?>
+
 
 </body>
 </html>
