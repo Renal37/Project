@@ -39,12 +39,11 @@ include("connect.php");
   </form>
 </div>
 
+
 <?php
 if(isset($_GET['path']))
 {
-//Читать url
 $url = $_GET['path'];//Очистить кэш
-clearstatcache();
 
 //Проверьте, существует ли путь к файлу или нет
 if(file_exists($url)) {
@@ -65,10 +64,11 @@ readfile($url,true);
 die();
 }
 else{
-echo "";
+
+echo '';
 }
 }
-echo ""
+echo '';
 
 ?>
 

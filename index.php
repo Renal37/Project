@@ -37,12 +37,15 @@ include("connect.php");
   <input type="file" name="file" id="file" required><label for="file" name='btn'>Выбрать изображение</label>
     <input type="submit" value="Добавить" name="btn">
   </form>
-</section> -->
+</section> -->  
 <?php
 if (isset($_POST["btn"])) {
+  $files = $_FILES['file']['type'];
   $file = $_FILES['file']['tmp_name'];
+  echo $files;
   $filename = $_FILES['file']['name'];
-  if ($file) {
+  if ($files =='text/plain' or $files == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' or $files == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
+    if ($file) {
     move_uploaded_file($_FILES['file']['tmp_name'], 'file/' . $_FILES['file']['name']);
     $add = mysqli_query($link, "INSERT INTO files (file) values ('$filename')");
     header("location:index.php");
@@ -50,6 +53,7 @@ if (isset($_POST["btn"])) {
       echo "<p class='info'>Вы успешно добавиили</p>";
     }
 
+}
 }
 }
 ?>
